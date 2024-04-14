@@ -13,9 +13,17 @@ import base64
 # Load environment variables
 load_dotenv()
 
+# Get the current directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Define the path to the image file
+img_path = os.path.join(current_dir, 'chatpng.png')
+
+# Open the image
+img = Image.open(img_path)
+
 # Set Streamlit page configuration
-img = Image.open(r"C:\Users\ADMIN\Desktop\PYTHON CODES\Streamlit Projects\chatpdf\chatpng.png")
-st.set_page_config(page_title="Mugare Chat: Document Generation AI", page_icon=img)
+st.set_page_config(page_title="ASK Your PDF AI: Document Generation AI", page_icon=img)
 
 # Function to convert image to base64
 def img_to_base64(image_path):
