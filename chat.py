@@ -1,4 +1,4 @@
-﻿from dotenv import load_dotenv
+from dotenv import load_dotenv
 import os
 import streamlit as st
 from PyPDF2 import PdfReader
@@ -10,15 +10,23 @@ from langchain.llms import OpenAI
 from PIL import Image
 import base64
 
-# Load environment variables
+# Load environment variables from .env file
 load_dotenv()
+
+# Retrieve OpenAI API key from environment variables
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Get the current directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
-# Set Streamlit page configuration
+
+# Define the path to the image file
 img_path = os.path.join(current_dir, 'chatpng.png')
+
+# Open the image
 img = Image.open(img_path)
-st.set_page_config(page_title="Mugare Chat: Document Generation AI", page_icon=img)
+
+# Set Streamlit page configuration
+st.set_page_config(page_title="ASK Your PDF AI: Document Generation AI", page_icon=img)
 
 # Function to convert image to base64
 def img_to_base64(image_path):
